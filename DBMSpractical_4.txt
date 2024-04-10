@@ -1,3 +1,4 @@
+/* Creation of atleast 3 tables and apply normalization*/
 create database Library1;
 show databases;
 use Library1;
@@ -17,15 +18,16 @@ INSERT INTO Books_Library(ISBN,Title,Category,price)VALUES
 create Table Readers(
 User_Id INT PRIMARY KEY ,
 Email_Id VARCHAR(100) not null,
-Reader_Name VARCHAR(100) ,
+Reader_FirstName VARCHAR(100) ,
+Reader_LastName VARCHAR(100),
 Address VARCHAR(100)
 );
 SELECT* FROM Readers;
-INSERT INTO Readers(User_Id,Email_Id,Reader_Name,Address)VALUES
-(10,'rajpatil@1234gmail.com','Raj Patil','Hinjewadi-phase1'),
-(11,'sarveshrathod@123gmail.com','Sarvesh Rathod','Blue Ridge'),
-(12,'shubhampadhi25@gmail.com','Shubham Padhi','Vishal PG'),
-(13,'aayushjadhav@124gmail.com','Aayush Jadhav','Bhumkar Chowk');
+INSERT INTO Readers(User_Id,Email_Id,Reader_FirstName,Reader_LastName,Address)VALUES
+(10,'rajpatil@1234gmail.com','Raj','Patil','Hinjewadi-phase1'),
+(11,'sarveshrathod@123gmail.com','Sarvesh','Rathod','Blue Ridge'),
+(12,'shubhampadhi25@gmail.com','Shubham','Padhi','Vishal PG'),
+(13,'aayushjadhav@124gmail.com','Aayush' ,'Jadhav','Bhumkar Chowk');
 create Table Reports(
 User_id INT,
 Reg_no VARCHAR(100) PRIMARY KEY,
