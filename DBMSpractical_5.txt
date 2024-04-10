@@ -1,0 +1,78 @@
+/* Use of Primary Key and Foriegn Key*/
+CREATE DATABASE Worker;
+
+SHOW DATABASES;
+
+USE Worker;
+
+Create Table Employee(
+Emp_ID INT PRIMARY KEY NOT NULL,
+FirstName VARCHAR(100),
+LastName VARCHAR(100),
+Salary  INT,
+Address Varchar(101),
+Join_Date DATE
+);
+
+Insert Into Employee (Emp_ID,FirstName,LastName,Salary,Address,Join_Date) VALUES
+(1,'Raj','Patil',86000,'Pune','2017-02-13'),
+(2,'Pragya','Tiwari',50000,'Bangalore','2018-01-10'),
+(3,'Shubham','Padhi',81000,'Mumbai','2015-12-12'),
+(4,'Sarvesh',NULL,65000,'JalGaon','2019-03-10'),
+(5,'Aayush','Jadhav',89000,'Dhule','2014-05-23');
+
+SELECT * FROM Employee;
+
+ALTER TABLE Employee
+ADD COLUMN JoinYear INT ;
+
+UPDATE Employee
+SET JoinYear=DATEDIFF(current_date(),Join_Date)/365
+WHERE Emp_ID=1;
+
+UPDATE Employee
+SET JoinYear=DATEDIFF(current_date(),Join_Date)/365
+WHERE Emp_ID=2;
+
+UPDATE Employee
+SET JoinYear=DATEDIFF(current_date(),Join_Date)/365
+WHERE Emp_ID=3;
+
+UPDATE Employee
+SET JoinYear=DATEDIFF(current_date(),Join_Date)/365
+WHERE Emp_ID=4;
+
+UPDATE Employee
+SET JoinYear=DATEDIFF(current_date(),Join_Date)/365
+WHERE Emp_ID=5;
+
+SELECT * FROM Employee; 
+
+SELECT * FROM Employee WHERE Join_Date;
+
+SELECT * FROM Employee WHERE Salary BETWEEN 75000 AND 90000 ;
+
+SELECT *FROM Employee WHERE FirstName IN ('Shubham','Raj','Aayush');
+
+SELECT * FROM Employee WHERE LastName IS NULL;
+
+CREATE TABLE Emp_Branch (
+    Branch_ID INT PRIMARY KEY NOT NULL,
+    Branch_Name VARCHAR(100),
+    Emp_Bid INT,
+    FOREIGN KEY (Emp_Bid) REFERENCES Employee(Emp_ID)
+);
+
+
+INSERT INTO Emp_Branch (Branch_ID, Branch_Name, Emp_Bid) VALUES
+(101, 'Accounts', 1),  
+(102, 'Accounts', 2),  
+(103, 'HR', 3),        
+(104, 'Programmer', 4),
+(105, 'HR', 5);        
+
+
+SELECT * FROM Emp_Branch;
+
+
+SELECT * FROM Emp_Branch
