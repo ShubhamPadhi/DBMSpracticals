@@ -1,0 +1,64 @@
+create database Library1;
+show databases;
+use Library1;
+create Table Books_Library(
+ISBN INT PRIMARY KEY ,
+Title VARCHAR(100) not null,
+
+Category VARCHAR(100) ,
+Price INT
+);
+SELECT * FROM Books_Library;
+INSERT INTO Books_Library(ISBN,Title,Category,price)VALUES
+(121,'Around the world 80 days','NOVEL',169),
+(101,'Sherlock Holmes','NOVEL',200),
+(119,'Better Photography','MAGAZINE',16),
+(100,'Wuthering Heights','NOVEL',309);
+create Table Readers(
+User_Id INT PRIMARY KEY ,
+Email_Id VARCHAR(100) not null,
+Reader_Name VARCHAR(100) ,
+Address VARCHAR(100)
+);
+SELECT* FROM Readers;
+INSERT INTO Readers(User_Id,Email_Id,Reader_Name,Address)VALUES
+(10,'rajpatil@1234gmail.com','Raj Patil','Hinjewadi-phase1'),
+(11,'sarveshrathod@123gmail.com','Sarvesh Rathod','Blue Ridge'),
+(12,'shubhampadhi25@gmail.com','Shubham Padhi','Vishal PG'),
+(13,'aayushjadhav@124gmail.com','Aayush Jadhav','Bhumkar Chowk');
+create Table Reports(
+User_id INT,
+Reg_no VARCHAR(100) PRIMARY KEY,
+Book_No INT,
+Issue_Return DATE
+);
+SELECT *FROM Reports;
+INSERT INTO Reports(User_id,Reg_No,Book_no,Issue_Return)values
+(10,'T22010',121,'2024-02-01'),
+(11,'T22020',101,'2024-02-02'),
+(12,'T22011',119,'2024-02-03'),
+(13,'T22022',100,'2024-02-04');
+aLTER tABLE Reports
+ADD COLUMN Address1 Varchar(100);
+
+UPDATE Reports
+SET Address1 = 'Hinjewadi-phase1'
+WHERE Reg_no = 'T22010';
+
+UPDATE Reports
+SET Address1 = 'Blue Ridge'
+WHERE Reg_no = 'T22020';
+
+UPDATE Reports
+SET Address1 = 'Vishal PG'
+WHERE Reg_no = 'T22011';
+
+UPDATE Reports
+SET Address1 = 'Bhumkar Chowk'
+WHERE Reg_no = 'T22022';
+ALTER TABLE Reports
+DROP COLUMN Address;
+select *from Reports;
+
+
+
